@@ -31,30 +31,27 @@ function buildSass() {
       ])
     ) 
     .pipe(rename('styles.min.css'))*/
-      .pipe(dest('dist/css'))
       .pipe(dest('src/css'))
       .pipe(sourcemaps.write('.'))
       .pipe(browserSync.stream())
   );
 }
 
-/* function buildJs() {
+function buildJs() {
   return (
-    src('src/js/scripts.js')
+    src('src/js/main.js')
       //.pipe(rename('scripts.min.js'))
-      .pipe(dest('dist/js'))
-       .pipe(dest('src/js'))
+      //.pipe(dest('src/js'))
       .pipe(browserSync.stream())
   );
 }
- */
 
 function html() {
-  return src('src/**/*.html').pipe(dest('dist/')).pipe(browserSync.stream());
+  return src('src/**/*.html').pipe(browserSync.stream());
 }
 
 function serve() {
-  //watch('src/js/**/*.js', buildJs);
+  watch('src/js/**/*.js', buildJs);
   watch('src/scss/**/*.scss', buildSass);
   watch('src/**/*.html', html);
 }
@@ -68,5 +65,5 @@ function cleanDist() {
 }
 
 exports.clean = series(cleanDist);
-exports.build = series(cleanDist, buildSass, html, copy);
-exports.default = series(buildSass, parallel(browsersync, serve));
+exports.build = series(cleanDist, buildSass, buildJs, html, copy);
+exports.default = series([buildSass, buildJs], parallel(browsersync, serve));
