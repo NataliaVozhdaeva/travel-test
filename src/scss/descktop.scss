@@ -84,6 +84,22 @@
 
   .features-item {
     margin-bottom: 0;
+
+    &:last-child {
+      display: inline-flex;
+      position: relative;
+      min-width: 226px;
+      white-space: nowrap;
+
+      &::before {
+        position: absolute;
+        left: -22px;
+
+        content: url('../img/icons/check.png');
+        width: 16px;
+        height: 12px;
+      }
+    }
   }
 
   .features-item:not(:last-child) {
@@ -95,6 +111,7 @@
 
     &-header {
       width: auto;
+      margin-right: 5px;
     }
 
     &-btn {
