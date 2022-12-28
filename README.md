@@ -1,5 +1,5 @@
 <h1>Тестовое задание</h1>
-<a href="https://nataliavozhdaeva.github.io/travel-test/dist/">Посмотреть в браузере</a>
+<a href="https://nataliavozhdaeva.github.io/travel-test/dist/" target="_blanck">Посмотреть в браузере</a>
 <h2>1. Верстка блока, mobile-first</h2>
 <ul>
   <li>Есть мобильная и десктопная версии + верстка резиновая -> контект корректно отображается и на промежуточных вариантах.</li>
